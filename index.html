@@ -8,11 +8,10 @@
     <style>
         :root {
             --neon: #bc13fe;
-            --neon-dim: rgba(188, 19, 254, 0.2);
-            --bg: #000000;                /* Tło: Solid Black */
-            --card-bg: #0a0a0f;           /* Tło karty */
+            --bg: #000000;                
+            --card-bg: #0a0a0f;           
             --text-light: #ffffff;
-            --text-muted: #a0a0a0;
+            --text-muted: #b0b0b0; /* Nieco jaśniejszy szary dla czytelności */
             --font-main: 'Inter', sans-serif;
             --font-head: 'Exo 2', sans-serif;
         }
@@ -27,7 +26,7 @@
             overflow-x: hidden;
         }
 
-        /* Sidebar - Styl Cyberpunk */
+        /* Sidebar */
         #sidebar {
             width: 280px;
             background: #050505;
@@ -49,37 +48,47 @@
             align-items: center;
         }
 
-        .logo-img {
-            width: 140px; 
-            height: 140px;
+        /* Tło pod samym logiem i większy rozmiar */
+        .logo-wrapper {
+            background-color: #101015; /* Tło pod logo */
+            padding: 15px;
             border-radius: 50%;
-            border: 2px solid var(--neon);
-            box-shadow: 0 0 15px var(--neon);
-            object-fit: cover;
+            border: 1px solid #222;
             margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 150px; /* Większe logo */
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
             mix-blend-mode: screen; 
         }
 
-        /* Główny napis pod logo */
+        /* Napis z logo - WorkValueStats */
         .brand-name {
             font-family: var(--font-head);
             font-weight: 700;
-            font-size: 1.6rem;
+            font-size: 1.8rem; /* Większa czcionka */
             color: white;
-            text-transform: none; /* Zachowujemy wielkość liter z logo */
+            text-transform: none;
             letter-spacing: 0.5px;
             margin: 0;
             text-shadow: 0 0 5px var(--neon);
         }
 
-        /* Mniejszy napis pod głównym - Kalkulator Wartości Pracy */
+        /* Mniejszy napis z logo pod spodem */
         .brand-sub {
             font-family: var(--font-main);
             font-weight: 400;
-            font-size: 0.8rem;
+            font-size: 0.9rem; /* Większa czcionka */
             color: var(--text-muted);
-            margin-top: 5px;
+            margin-top: 8px;
             letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .nav-menu ul { list-style: none; padding: 0; }
@@ -204,6 +213,7 @@
             body { flex-direction: column; }
             #sidebar { width: 100%; border-right: none; border-bottom: 2px solid var(--neon); }
             #main { padding: 20px; }
+            .logo-img { width: 120px; height: 120px; } /* Mniejsze na mobile */
         }
     </style>
 </head>
@@ -211,7 +221,9 @@
 
 <div id="sidebar">
     <div class="logo-area">
-        <img src="logo.png" alt="Beaver" class="logo-img">
+        <div class="logo-wrapper">
+            <img src="logo.png" alt="Beaver" class="logo-img">
+        </div>
         
         <h1 class="brand-name">WorkValueStats</h1>
         
