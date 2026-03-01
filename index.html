@@ -3,102 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>WorkValueStats - Cześć Bóbr, Beaver</title>
+    <title>WorkValueStats - Bóbr</title>
     <style>
-        /* 1. KOLORYSTYKA (Ciemny, fioletowy, profesjonalny) */
-        :root {
-            --bg-color: #0f172a; /* Bardzo ciemny granat, prawie czarny, lepszy niż czysty czarny */
-            --violet-primary: #a855f7; /* Jasny fiolet z logo */
-            --violet-dark: #6b21a8; /* Ciemny fiolet z logo */
-            --text-main: #f1f5f9; /* Prawie biały tekst, czytelny */
-            --text-muted: #94a3b8; /* Szary tekst, dla mniej ważnych rzeczy */
-        }
-
-        /* 2. RESP0NSYWNOŚĆ I UKŁAD (Sztywny, nie rozjeżdża się) */
+        /* To naprawia responsywność */
         body {
             margin: 0;
             padding: 20px;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            font-family: sans-serif;
+            background-color: #1a1a1a; /* Ciemne tło, żeby logo pasowało */
+            color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
             overflow-x: hidden; /* Blokada przesuwania na boki */
         }
-
-        /* 3. LOGO (Czyste kółko z fioletowym tłem) */
-        .logo-container {
-            width: 120px;
-            height: 120px;
-            background-color: var(--violet-dark); /* Tło koła */
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4); /* Fioletowy blask */
-            margin-bottom: 30px;
-            overflow: hidden; /* Upewnia się, że obraz jest w kole */
-        }
-
-        .logo-container img {
-            max-width: 90%; /* Bóbr wewnątrz koła */
+        
+        /* Styl dla Twojego nowego logo */
+        .my-logo {
+            max-width: 150px;
             height: auto;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
         }
 
         h1 {
-            font-size: 1.8rem;
             text-align: center;
-            color: var(--violet-primary);
-            margin-bottom: 5px;
-            text-shadow: 0 0 10px rgba(168, 85, 247, 0.5); /* Blask nagłówka */
+            font-size: 1.5rem;
         }
 
-        .subtitle {
-            font-size: 1rem;
-            color: var(--text-muted);
-            margin-top: 0;
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        /* Twój kalkulator (Dodam mu styl pasujący do fioletu) */
-        input, button {
-            width: 100%;
-            max-width: 300px;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 12px; /* Bardziej zaokrąglone, nowoczesne */
-            border: 1px solid var(--violet-dark);
-            background-color: #1e293b; /* Ciemny szary dla pól */
-            color: white;
-            font-size: 1rem;
-        }
-
-        button {
-            background-color: var(--violet-primary);
-            color: black; /* Czarny tekst na fioletowym przycisku - czytelny */
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        button:hover {
-            background-color: var(--violet-dark);
-            color: white;
-        }
+        /* Tu będzie reszta Twojego starego kodu (kalkulator itp.) */
+        /* Jeśli masz swój stary kod CSS, wklej go poniżej */
     </style>
 </head>
 <body>
 
-    <div class="logo-container">
-        <img src="logo_kolo.png" alt="WorkValueStats Logo">
-    </div>
+    <img src="logo_kolo.png" alt="Logo Bóbr" class="my-logo">
 
     <h1>WorkValueStats - Cześć Bóbr, Beaver</h1>
-    <p class="subtitle">Kalkulator Wartości Pracy</p>
 
     </body>
 </html>
