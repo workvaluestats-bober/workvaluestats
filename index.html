@@ -1,140 +1,182 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WorkValue Stats - Pizza Index & Beaver Investor</title>
+    <title>WorkValue Stats | Beaver Investor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #27ae60;
-            --sidebar-bg: #2c3e50;
-            --text-light: #ecf0f1;
-            --bg-body: #f4f7f6;
-            --accent-color: #e67e22;
+            --neon-purple: #bc13fe; /* Odcień z Twojego logo */
+            --dark-space: #08080c;
+            --glass: rgba(255, 255, 255, 0.05);
         }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; display: flex; height: 100vh; background-color: var(--bg-body); color: #333; }
-        
-        /* Sidebar */
-        #sidebar { width: 260px; background: var(--sidebar-bg); color: var(--text-light); display: flex; flex-direction: column; flex-shrink: 0; }
-        .logo-area { padding: 30px 20px; text-align: center; background: #1a252f; }
-        .logo-area h1 { margin: 0; font-size: 22px; color: var(--primary-color); letter-spacing: 1px; }
-        .nav-menu { flex-grow: 1; padding: 20px 0; }
-        .nav-menu ul { list-style: none; padding: 0; margin: 0; }
-        .nav-menu li { padding: 15px 25px; cursor: pointer; transition: 0.3s; border-left: 4px solid transparent; }
-        .nav-menu li:hover, .nav-menu li.active { background: #34495e; border-left: 4px solid var(--primary-color); color: var(--primary-color); }
 
-        /* Main Content */
-        #main { flex-grow: 1; overflow-y: auto; padding: 40px; }
-        .breadcrumbs { font-size: 14px; color: #7f8c8d; margin-bottom: 30px; }
-        
-        .content-section { display: none; }
-        .content-section.active { display: block; }
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--dark-space);
+            color: white;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background: radial-gradient(circle at 50% 50%, #1a0b2e 0%, #08080c 100%);
+        }
 
-        .content-card { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; max-width: 800px; }
-        .beaver-badge { position: absolute; top: 40px; right: 40px; width: 80px; height: 80px; background: #f9f9f9; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; border: 3px solid var(--primary-color); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        header {
+            padding: 40px 20px;
+            text-align: center;
+        }
 
-        h2 { color: #2c3e50; margin-top: 0; }
-        .calc-box { margin-top: 30px; background: #f9f9f9; padding: 25px; border-radius: 8px; border: 1px solid #ddd; }
-        label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 14px; }
-        input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 16px; }
-        button { width: 100%; padding: 15px; background: var(--primary-color); border: none; color: white; font-weight: bold; border-radius: 4px; cursor: pointer; font-size: 16px; transition: 0.2s; }
-        button:hover { background: #219150; transform: translateY(-1px); }
+        .logo-box {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: url('logo_bobier.png') center/cover; /* Tu wrzuć plik logo */
+            box-shadow: 0 0 30px var(--neon-purple);
+            border: 2px solid var(--neon-purple);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 1.8rem;
+            margin: 0;
+            text-shadow: 0 0 10px var(--neon-purple);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(188, 19, 254, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        .input-group { margin-bottom: 25px; }
         
-        #result { margin-top: 25px; padding: 15px; border-radius: 6px; background: #e8f5e9; color: #2e7d32; display: none; text-align: center; }
+        label {
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: var(--neon-purple);
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            background: rgba(0,0,0,0.6);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 15px;
+            color: #fff;
+            font-size: 1.2rem;
+            font-family: 'Rajdhani', sans-serif;
+            outline: none;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: var(--neon-purple);
+            box-shadow: 0 0 15px rgba(188, 19, 254, 0.4);
+        }
+
+        button {
+            width: 100%;
+            padding: 18px;
+            background: transparent;
+            border: 2px solid var(--neon-purple);
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+            box-shadow: inset 0 0 0 0 var(--neon-purple);
+        }
+
+        button:hover {
+            background: var(--neon-purple);
+            box-shadow: 0 0 20px var(--neon-purple);
+            color: black;
+        }
+
+        #result {
+            margin-top: 30px;
+            text-align: center;
+            display: none;
+        }
+
+        .time-val {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 20px var(--neon-purple);
+        }
+
+        .share-btn {
+            margin-top: 20px;
+            font-size: 0.7rem;
+            color: #aaa;
+            text-decoration: underline;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 
-<div id="sidebar">
-    <div class="logo-area">
-        <h1>WORKVALUE</h1>
-        <small>Stats & Insights</small>
-    </div>
-    <div class="nav-menu">
-        <ul>
-            <li onclick="showSection('dashboard')">🏠 Dashboard</li>
-            <li class="active" onclick="showSection('pizza')">🍕 Pizza Index</li>
-            <li onclick="showSection('beaver')">🦫 O Bobrze</li>
-        </ul>
-    </div>
-</div>
+<header>
+    <div class="logo-box"></div>
+    <h1>Work Value</h1>
+</header>
 
-<div id="main">
-    <div class="breadcrumbs">Główna <span>&gt;</span> Kalkulatory <span>&gt;</span> <b id="current-crumb">Pizza Index</b></div>
-    
-    <div id="pizza" class="content-section active">
-        <div class="content-card">
-            <div class="beaver-badge">🍕</div>
-            <h2>Kalkulator Pizza Index</h2>
-            <p>Dowiedz się, ile Twojego życia "zjada" jedna pizza. Czas to najdroższa waluta!</p>
-            
-            <div class="calc-box">
-                <label>Cena pizzy (PLN):</label>
-                <input type="number" id="pizzaPrice" placeholder="np. 45">
-                
-                <label>Twoja stawka godzinowa netto (PLN):</label>
-                <input type="number" id="hourlyRate" placeholder="np. 35">
-                
-                <button onclick="calculatePizza()">Przelicz na roboczogodziny</button>
-                
-                <div id="result"></div>
-            </div>
-        </div>
+<div class="container">
+    <div class="input-group">
+        <label>Price (USD)</label>
+        <input type="number" id="price" placeholder="0.00">
     </div>
 
-    <div id="beaver" class="content-section">
-        <div class="content-card">
-            <div class="beaver-badge">🦫</div>
-            <h2>Beaver Investor</h2>
-            <p>Bóbr nie wydaje na głupoty. Bóbr buduje tamy kapitałowe.</p>
-            <ul style="line-height: 1.8;">
-                <li><b>Pracowitość:</b> Buduje swoje imperium gałązka po gałązce.</li>
-                <li><b>Oszczędność:</b> Każda pizza to o 3 kłody mniej w funduszu awaryjnym.</li>
-                <li><b>Strategia:</b> Nie pływa pod prąd bez powodu.</li>
-            </ul>
-        </div>
+    <div class="input-group">
+        <label>Your Hourly Rate (Net)</label>
+        <input type="number" id="rate" placeholder="0.00">
+    </div>
+
+    <button onclick="calc()">Run Scan</button>
+
+    <div id="result">
+        <div class="time-val" id="val">0.0</div>
+        <p style="text-transform: uppercase; letter-spacing: 2px;">Hours of life spent</p>
+        <div class="share-btn" onclick="copyResult()">Copy result for Twitter</div>
     </div>
 </div>
 
 <script>
-    function showSection(sectionId) {
-        // Ukryj wszystkie sekcje
-        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-        // Pokaż wybraną
-        document.getElementById(sectionId).classList.add('active');
+    function calc() {
+        const p = document.getElementById('price').value;
+        const r = document.getElementById('rate').value;
+        const resDiv = document.getElementById('result');
         
-        // Aktualizuj menu
-        document.querySelectorAll('.nav-menu li').forEach(li => li.classList.remove('active'));
-        event.currentTarget.classList.add('active');
-        
-        // Aktualizuj breadcrumb
-        document.getElementById('current-crumb').innerText = event.currentTarget.innerText.split(' ')[1];
+        if(p > 0 && r > 0) {
+            const h = (p / r).toFixed(1);
+            document.getElementById('val').innerText = h + "h";
+            resDiv.style.display = 'block';
+        }
     }
 
-    function calculatePizza() {
-        const price = parseFloat(document.getElementById('pizzaPrice').value);
-        const rate = parseFloat(document.getElementById('hourlyRate').value);
-        const resultDiv = document.getElementById('result');
-        
-        if(price && rate && rate > 0) {
-            const hours = price / rate;
-            let timeString = "";
-
-            if (hours < 1) {
-                const minutes = Math.round(hours * 60);
-                timeString = minutes + " minut";
-            } else {
-                timeString = hours.toFixed(2) + " godziny";
-            }
-
-            resultDiv.style.display = "block";
-            resultDiv.innerHTML = "Ta pizza kosztuje Cię <strong>" + timeString + "</strong> pracy. 🍕<br><small>Bóbr by tyle nie czekał!</small>";
-        } else {
-            resultDiv.style.display = "block";
-            resultDiv.style.background = "#ffebee";
-            resultDiv.style.color = "#c62828";
-            resultDiv.innerHTML = "Wpisz poprawne dane, Szefie!";
-        }
+    function copyResult() {
+        const val = document.getElementById('val').innerText;
+        const text = `I just found out this item costs me ${val} of my life. 🦫 Check your #WorkValue here!`;
+        navigator.clipboard.writeText(text);
+        alert("Copied to clipboard! Ready for viral post.");
     }
 </script>
 
