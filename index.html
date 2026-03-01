@@ -4,165 +4,251 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WORKVALUE | Beaver Systems</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --neon: #bc13fe;
             --neon-dim: rgba(188, 19, 254, 0.3);
             --bg: #050508;
             --card-bg: rgba(15, 15, 25, 0.8);
+            --text-light: #ffffff;
+            --text-muted: #a0a0a0;
         }
 
         body {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Rajdhani', sans-serif;
             background-color: var(--bg);
-            color: #e0e0e0;
+            color: var(--text-light);
             margin: 0;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             min-height: 100vh;
+            overflow-x: hidden;
             background-image: 
                 linear-gradient(var(--neon-dim) 1px, transparent 1px),
                 linear-gradient(90deg, var(--neon-dim) 1px, transparent 1px);
             background-size: 50px 50px;
         }
 
-        .header {
-            margin-top: 50px;
+        /* Sidebar - Cyberpunk Style */
+        #sidebar {
+            width: 280px;
+            background: rgba(10, 10, 15, 0.95);
+            border-right: 2px solid var(--neon);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+            box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+            flex-shrink: 0;
+        }
+
+        .logo-area {
             text-align: center;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--neon-dim);
+            margin-bottom: 20px;
         }
 
         .logo-img {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            border: 3px solid var(--neon);
-            box-shadow: 0 0 20px var(--neon), inset 0 0 20px var(--neon);
-            margin-bottom: 20px;
+            border: 2px solid var(--neon);
+            box-shadow: 0 0 15px var(--neon);
             object-fit: cover;
-            /* Triki, jeśli logo ma tło: */
-            mix-blend-mode: screen; 
-            filter: brightness(1.2);
+            margin-bottom: 15px;
+            mix-blend-mode: screen; /* Sprawia, że czarne tło znika */
         }
 
-        h1 {
+        .brand-name {
             font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            color: #fff;
-            text-shadow: 3px 3px 0 var(--neon), -1px -1px 0 #0ff;
+            font-size: 1.5rem;
+            color: white;
+            text-shadow: 0 0 10px var(--neon);
             margin: 0;
         }
 
-        .container {
-            width: 90%;
-            max-width: 450px;
-            margin: 40px 0;
-            background: var(--card-bg);
-            border: 2px solid var(--neon);
-            padding: 40px;
-            backdrop-filter: blur(10px);
-            box-shadow: 10px 10px 0px var(--neon);
-            box-sizing: border-box;
+        .nav-menu ul { list-style: none; padding: 0; }
+        .nav-menu li {
+            padding: 15px;
+            cursor: pointer;
+            color: var(--text-muted);
+            border-left: 2px solid transparent;
+            transition: 0.3s;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .nav-menu li:hover, .nav-menu li.active {
+            background: rgba(188, 19, 254, 0.1);
+            color: var(--neon);
+            border-left: 2px solid var(--neon);
         }
 
-        .input-group { margin-bottom: 25px; }
+        /* Main Content */
+        #main {
+            flex-grow: 1;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            overflow-y: auto;
+        }
 
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: var(--card-bg);
+            border: 1px solid var(--neon-dim);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: white;
+            margin-top: 0;
+            text-shadow: 0 0 5px var(--neon);
+        }
+
+        .input-group { margin-bottom: 20px; }
+        
         label {
             display: block;
             color: var(--neon);
-            font-size: 0.7rem;
-            margin-bottom: 10px;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
         }
 
         input {
             width: 100%;
-            background: rgba(0,0,0,0.8);
-            border: 1px solid var(--neon);
-            padding: 15px;
-            color: #0ff;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.2rem;
-            outline: none;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 12px;
+            color: white;
+            font-size: 1.1rem;
             box-sizing: border-box;
+            font-family: 'JetBrains Mono', monospace;
         }
+
+        input:focus { border-color: var(--neon); outline: none; }
 
         button {
             width: 100%;
-            padding: 20px;
+            padding: 15px;
             background: transparent;
             border: 2px solid var(--neon);
-            color: var(--neon);
+            color: white;
             font-family: 'Orbitron', sans-serif;
             font-weight: bold;
             text-transform: uppercase;
             cursor: pointer;
-            transition: 0.2s;
+            border-radius: 8px;
+            transition: 0.3s;
         }
 
         button:hover {
             background: var(--neon);
             color: #000;
-            box-shadow: 0 0 30px var(--neon);
+            box-shadow: 0 0 15px var(--neon);
         }
 
-        #result-box {
+        #result {
+            margin-top: 25px;
+            text-align: center;
             display: none;
-            margin-top: 30px;
             border-top: 1px solid var(--neon-dim);
             padding-top: 20px;
-            text-align: center;
         }
 
-        .big-time {
-            font-size: 4rem;
+        .time-val {
+            font-size: 3rem;
             font-family: 'Orbitron', sans-serif;
-            color: #fff;
-            text-shadow: 0 0 15px var(--neon);
+            color: white;
+            text-shadow: 0 0 10px var(--neon);
+        }
+
+        .share-btn {
+            margin-top: 15px;
+            font-size: 0.75rem;
+            color: #0ff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            #sidebar { width: 100%; border-right: none; border-bottom: 2px solid var(--neon); }
+            #main { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <img src="logo.png" alt="Beaver Investor" class="logo-img">
-        <h1>WORKVALUE</h1>
+<div id="sidebar">
+    <div class="logo-area">
+        <img src="logo.png" alt="Beaver" class="logo-img">
+        <h1 class="brand-name">WORKVALUE</h1>
     </div>
+    <div class="nav-menu">
+        <ul>
+            <li class="active">🍕 Time Cost</li>
+            <li>📊 Global Data</li>
+        </ul>
+    </div>
+</div>
 
+<div id="main">
     <div class="container">
+        <h2>Time Cost Calculator</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Convert expenses into hours of your life.</p>
+        
         <div class="input-group">
-            <label>> ENTER_ASSET_PRICE (USD)</label>
-            <input type="number" id="price" placeholder="000.00">
+            <label>Item Price ($)</label>
+            <input type="number" id="price" placeholder="0.00">
         </div>
 
         <div class="input-group">
-            <label>> ENTER_HOURLY_RATE (NET)</label>
-            <input type="number" id="rate" placeholder="00.00">
+            <label>Your Hourly Rate (Net)</label>
+            <input type="number" id="rate" placeholder="0.00">
         </div>
 
-        <button onclick="calculate()">Execute Analysis</button>
+        <button onclick="calc()">Run Scan</button>
 
-        <div id="result-box">
-            <div class="big-time" id="val">0.0h</div>
-            <p style="color: var(--neon); font-size: 0.8rem;">TOTAL LIFE HOURS CONSUMED</p>
+        <div id="result">
+            <div class="time-val" id="val">0.0h</div>
+            <p style="text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 0;">Hours of life spent</p>
+            <div class="share-btn" onclick="copyResult()">[ COPY_FOR_TERMINAL ]</div>
         </div>
     </div>
+</div>
 
-    <script>
-        function calculate() {
-            const p = document.getElementById('price').value;
-            const r = document.getElementById('rate').value;
-            if(p > 0 && r > 0) {
-                const hours = (p / r).toFixed(1);
-                document.getElementById('val').innerText = hours + "H";
-                document.getElementById('result-box').style.display = 'block';
-            }
+<script>
+    function calc() {
+        const p = document.getElementById('price').value;
+        const r = document.getElementById('rate').value;
+        const resDiv = document.getElementById('result');
+        
+        if(p > 0 && r > 0) {
+            const h = (p / r).toFixed(1);
+            document.getElementById('val').innerText = h + "h";
+            resDiv.style.display = 'block';
         }
-    </script>
+    }
+
+    function copyResult() {
+        const val = document.getElementById('val').innerText;
+        const text = `WORKVALUE SCAN: This item costs me ${val} of my life. 🦫 Check your #WorkValue at [YourDomain].com`;
+        navigator.clipboard.writeText(text);
+        alert("Data copied to clipboard!");
+    }
+</script>
+
 </body>
 </html>
