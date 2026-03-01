@@ -14,6 +14,7 @@
             --text-muted: #b0b0b0;
             --font-main: 'Inter', sans-serif;
             --font-head: 'Exo 2', sans-serif;
+            --sidebar-bg: #050505; /* Zmienna dla koloru sidebara */
         }
 
         body {
@@ -29,7 +30,7 @@
         /* Sidebar */
         #sidebar {
             width: 280px;
-            background: #050505;
+            background: var(--sidebar-bg);
             border-right: 2px solid var(--neon);
             display: flex;
             flex-direction: column;
@@ -42,7 +43,7 @@
             text-align: center;
             padding-bottom: 20px;
             border-bottom: 1px solid #222;
-            margin-bottom: 10px; /* Zmniejszony margines */
+            margin-bottom: 10px; 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -50,11 +51,11 @@
 
         /* Kontener na ikonę bobra */
         .logo-wrapper {
-            background-color: #050505; 
+            background-color: var(--sidebar-bg); 
             padding: 0px; 
             border-radius: 50%;
             border: 1px solid #222;
-            margin-bottom: 5px; /* Zmniejszony margines pod ikoną */
+            margin-bottom: 5px; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -66,24 +67,27 @@
             overflow: hidden; 
         }
 
-        /* POWIĘKSZONE LOGO (ZOOM) */
+        /* POWIĘKSZONE LOGO */
         .logo-icon {
-            width: 125%; /* Skala logo */
+            width: 125%; 
             height: 125%;
             border-radius: 50%;
             object-fit: cover;
         }
 
-        /* Obrazek z napisem - MOCNO PRZYCIĘTY I ZMNIEJSZONY */
+        /* Obrazek z napisem - DODANE TŁO */
         .logo-text-image {
-            width: 180px; /* Szerokość napisu */
+            width: 180px; 
             height: auto;
             margin-top: 0px; 
             margin-bottom: 0px; 
             mix-blend-mode: screen; 
             
-            /* PRZYCINANIE GÓRY I DOŁU - usuwa puste miejsce */
+            /* PRZYCINANIE GÓRY I DOŁU */
             clip-path: inset(25% 0% 25% 0%); 
+            
+            /* DODANE TŁO, ABY ZAMASKOWAĆ PRZEZROCZYSTOŚĆ */
+            background-color: var(--sidebar-bg);
         }
 
         .nav-menu ul { list-style: none; padding: 0; }
@@ -279,4 +283,3 @@
 
 </body>
 </html>
-
