@@ -2,98 +2,103 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WorkValue Stats - Pizza Index & Beaver Investor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>WorkValueStats - Cześć Bóbr, Beaver</title>
     <style>
+        /* 1. KOLORYSTYKA (Ciemny, fioletowy, profesjonalny) */
         :root {
-            --primary-color: #27ae60;
-            --sidebar-bg: #2c3e50;
-            --text-light: #ecf0f1;
-            --bg-body: #f4f7f6;
+            --bg-color: #0f172a; /* Bardzo ciemny granat, prawie czarny, lepszy niż czysty czarny */
+            --violet-primary: #a855f7; /* Jasny fiolet z logo */
+            --violet-dark: #6b21a8; /* Ciemny fiolet z logo */
+            --text-main: #f1f5f9; /* Prawie biały tekst, czytelny */
+            --text-muted: #94a3b8; /* Szary tekst, dla mniej ważnych rzeczy */
         }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; display: flex; height: 100vh; background-color: var(--bg-body); }
-        
-        /* Sidebar - Lewe Menu */
-        #sidebar { width: 260px; background: var(--sidebar-bg); color: var(--text-light); display: flex; flex-direction: column; flex-shrink: 0; }
-        .logo-area { padding: 30px 20px; text-align: center; background: #1a252f; }
-        .logo-area h1 { margin: 0; font-size: 22px; color: var(--primary-color); letter-spacing: 1px; }
-        .nav-menu { flex-grow: 1; padding: 20px 0; }
-        .nav-menu ul { list-style: none; padding: 0; margin: 0; }
-        .nav-menu li { padding: 15px 25px; cursor: pointer; transition: 0.3s; border-left: 4px solid transparent; }
-        .nav-menu li:hover { background: #34495e; border-left: 4px solid var(--primary-color); color: var(--primary-color); }
-        .nav-menu li.active { background: #34495e; border-left: 4px solid var(--primary-color); }
 
-        /* Main Content */
-        #main { flex-grow: 1; overflow-y: auto; padding: 40px; }
-        .breadcrumbs { font-size: 14px; color: #7f8c8d; margin-bottom: 30px; }
-        .breadcrumbs span { margin: 0 10px; }
-        
-        .content-card { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; }
-        .beaver-badge { position: absolute; top: 40px; right: 40px; width: 100px; height: 100px; background: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 50px; border: 3px solid var(--primary-color); }
+        /* 2. RESP0NSYWNOŚĆ I UKŁAD (Sztywny, nie rozjeżdża się) */
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden; /* Blokada przesuwania na boki */
+        }
 
-        h2 { color: #2c3e50; margin-top: 0; }
-        .calc-box { margin-top: 30px; background: #f9f9f9; padding: 25px; border-radius: 8px; border: 1px solid #ddd; max-width: 500px; }
-        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        button { width: 100%; padding: 12px; background: var(--primary-color); border: none; color: white; font-weight: bold; border-radius: 4px; cursor: pointer; font-size: 16px; }
-        button:hover { background: #219150; }
-        #result { margin-top: 20px; font-weight: bold; color: #2c3e50; font-size: 18px; }
+        /* 3. LOGO (Czyste kółko z fioletowym tłem) */
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            background-color: var(--violet-dark); /* Tło koła */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4); /* Fioletowy blask */
+            margin-bottom: 30px;
+            overflow: hidden; /* Upewnia się, że obraz jest w kole */
+        }
+
+        .logo-container img {
+            max-width: 90%; /* Bóbr wewnątrz koła */
+            height: auto;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            text-align: center;
+            color: var(--violet-primary);
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.5); /* Blask nagłówka */
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-top: 0;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        /* Twój kalkulator (Dodam mu styl pasujący do fioletu) */
+        input, button {
+            width: 100%;
+            max-width: 300px;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 12px; /* Bardziej zaokrąglone, nowoczesne */
+            border: 1px solid var(--violet-dark);
+            background-color: #1e293b; /* Ciemny szary dla pól */
+            color: white;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: var(--violet-primary);
+            color: black; /* Czarny tekst na fioletowym przycisku - czytelny */
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: var(--violet-dark);
+            color: white;
+        }
     </style>
 </head>
 <body>
 
-<div id="sidebar">
-    <div class="logo-area">
-        <h1>Cześć Wiola<br>buziaki :*:*</h1>
-        <small>Stats & Insights</small>
+    <div class="logo-container">
+        <img src="logo_kolo.png" alt="WorkValueStats Logo">
     </div>
-    <div class="nav-menu">
-        <ul>
-            <li class="active">🏠 Dashboard</li>
-            <li>🍕 Pizza Index</li>
-            <li>📊 Zarobki Globalne</li>
-            <li>🦫 O Bobrze</li>
-            <li>⚙️ Ustawienia</li>
-        </ul>
-    </div>
-</div>
 
-<div id="main">
-    <div class="breadcrumbs">Główna <span>&gt;</span> Kalkulatory <span>&gt;</span> <b>Pizza Index</b></div>
-    
-    <div class="content-card">
-        <div class="beaver-badge">🦫</div>
-        <h2>Kalkulator Pizza Index</h2>
-        <p>Dowiedz się, ile naprawdę kosztuje Cię pizza w przeliczeniu na czas Twojej pracy.</p>
-        
-        <div class="calc-box">
-            <label>Cena pizzy (PLN):</label>
-            <input type="number" id="pizzaPrice" placeholder="np. 45">
-            
-            <label>Twoja stawka godzinowa netto (PLN):</label>
-            <input type="number" id="hourlyRate" placeholder="Obliczymy to jutro...">
-            
-            <button onclick="calculatePizza()">Przelicz na roboczogodziny</button>
-            
-            <div id="result"></div>
-        </div>
-    </div>
-</div>
+    <h1>WorkValueStats - Cześć Bóbr, Beaver</h1>
+    <p class="subtitle">Kalkulator Wartości Pracy</p>
 
-<script>
-    function calculatePizza() {
-        const price = document.getElementById('pizzaPrice').value;
-        const rate = document.getElementById('hourlyRate').value;
-        const resultDiv = document.getElementById('result');
-        
-        if(price && rate) {
-            const time = (price / rate).toFixed(2);
-            resultDiv.innerHTML = "Ta pizza kosztuje Cię " + time + " godziny pracy. 🍕";
-        } else {
-            resultDiv.innerHTML = "Wpisz dane, Szefie!";
-        }
-    }
-</script>
-
-</body>
+    </body>
 </html>
-
