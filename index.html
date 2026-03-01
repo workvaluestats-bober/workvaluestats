@@ -11,7 +11,7 @@
             --bg: #000000;                
             --card-bg: #0a0a0f;           
             --text-light: #ffffff;
-            --text-muted: #b0b0b0; /* Nieco jaśniejszy szary dla czytelności */
+            --text-muted: #b0b0b0;
             --font-main: 'Inter', sans-serif;
             --font-head: 'Exo 2', sans-serif;
         }
@@ -48,9 +48,9 @@
             align-items: center;
         }
 
-        /* Tło pod samym logiem i większy rozmiar */
+        /* Kontener na ikonę bobra */
         .logo-wrapper {
-            background-color: #101015; /* Tło pod logo */
+            background-color: #101015; /* Tło pod ikoną */
             padding: 15px;
             border-radius: 50%;
             border: 1px solid #222;
@@ -60,35 +60,20 @@
             align-items: center;
         }
 
-        .logo-img {
-            width: 150px; /* Większe logo */
-            height: 150px;
+        .logo-icon {
+            width: 140px; /* Rozmiar ikony */
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
             mix-blend-mode: screen; 
         }
 
-        /* Napis z logo - WorkValueStats */
-        .brand-name {
-            font-family: var(--font-head);
-            font-weight: 700;
-            font-size: 1.8rem; /* Większa czcionka */
-            color: white;
-            text-transform: none;
-            letter-spacing: 0.5px;
-            margin: 0;
-            text-shadow: 0 0 5px var(--neon);
-        }
-
-        /* Mniejszy napis z logo pod spodem */
-        .brand-sub {
-            font-family: var(--font-main);
-            font-weight: 400;
-            font-size: 0.9rem; /* Większa czcionka */
-            color: var(--text-muted);
-            margin-top: 8px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+        /* Obrazek z napisem */
+        .logo-text-image {
+            width: 220px; /* Dopasuj szerokość napisu */
+            height: auto;
+            margin-top: 10px;
+            mix-blend-mode: screen; /* Sprawia, że czarne tło napisu znika */
         }
 
         .nav-menu ul { list-style: none; padding: 0; }
@@ -213,7 +198,8 @@
             body { flex-direction: column; }
             #sidebar { width: 100%; border-right: none; border-bottom: 2px solid var(--neon); }
             #main { padding: 20px; }
-            .logo-img { width: 120px; height: 120px; } /* Mniejsze na mobile */
+            .logo-icon { width: 100px; height: 100px; }
+            .logo-text-image { width: 180px; }
         }
     </style>
 </head>
@@ -222,12 +208,10 @@
 <div id="sidebar">
     <div class="logo-area">
         <div class="logo-wrapper">
-            <img src="logo.png" alt="Beaver" class="logo-img">
+            <img src="logo_icon.png" alt="Beaver" class="logo-icon">
         </div>
         
-        <h1 class="brand-name">WorkValueStats</h1>
-        
-        <p class="brand-sub">Kalkulator Wartości Pracy</p>
+        <img src="logo_text.png" alt="WorkValueStats" class="logo-text-image">
     </div>
     <div class="nav-menu">
         <ul>
