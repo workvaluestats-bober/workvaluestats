@@ -48,32 +48,32 @@
             align-items: center;
         }
 
-        /* Kontener na ikonę bobra */
+        /* Kontener na ikonę bobra - ZMASKOWANIE POŚWIATY */
         .logo-wrapper {
-            background-color: #101015; /* Tło pod ikoną */
-            padding: 15px;
+            background-color: #050505; /* Ten sam kolor co sidebar, maskuje krawędzie */
+            padding: 2px;
             border-radius: 50%;
             border: 1px solid #222;
             margin-bottom: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
 
         .logo-icon {
-            width: 140px; /* Rozmiar ikony */
+            width: 140px; 
             height: 140px;
             border-radius: 50%;
             object-fit: cover;
-            mix-blend-mode: screen; 
         }
 
         /* Obrazek z napisem */
         .logo-text-image {
-            width: 220px; /* Dopasuj szerokość napisu */
+            width: 220px;
             height: auto;
             margin-top: 10px;
-            mix-blend-mode: screen; /* Sprawia, że czarne tło napisu znika */
+            mix-blend-mode: screen; 
         }
 
         .nav-menu ul { list-style: none; padding: 0; }
