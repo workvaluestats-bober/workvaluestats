@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WORKVALUE | Beaver Systems</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <title>WorkValueStats</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --neon: #bc13fe;
-            --neon-dim: rgba(188, 19, 254, 0.2);
-            --bg: #000000; /* Solid Black */
-            --card-bg: #0a0a0f; /* Very dark blue-black */
+            --neon-purple: #bc13fe;
+            --dark-bg: #08080c; /* Tło z obrazka koncepcyjnego */
+            --card-bg: rgba(15, 15, 25, 0.8);
             --text-light: #ffffff;
-            --text-muted: #a0a0a0;
+            --text-muted: #b0b0b0;
+            --font-bold: 'Orbitron', sans-serif;
+            --font-light: 'Rajdhani', sans-serif;
         }
 
         body {
-            font-family: 'Rajdhani', sans-serif;
-            background-color: var(--bg);
+            font-family: var(--font-light);
+            background-color: var(--dark-bg);
             color: var(--text-light);
             margin: 0;
             display: flex;
@@ -25,11 +26,11 @@
             overflow-x: hidden;
         }
 
-        /* Sidebar - Cyberpunk Style */
+        /* Sidebar - Styl Cyberpunk */
         #sidebar {
             width: 280px;
             background: #050505;
-            border-right: 2px solid var(--neon);
+            border-right: 2px solid var(--neon-purple);
             display: flex;
             flex-direction: column;
             padding: 20px;
@@ -48,18 +49,22 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            border: 2px solid var(--neon);
-            box-shadow: 0 0 15px var(--neon);
+            border: 2px solid var(--neon-purple);
+            box-shadow: 0 0 15px var(--neon-purple);
             object-fit: cover;
             margin-bottom: 15px;
             mix-blend-mode: screen; 
         }
 
+        /* Nazwa marki czcionką z logo (Orbitron) */
         .brand-name {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
+            font-family: var(--font-bold);
+            font-weight: 700;
+            font-size: 1.6rem;
             color: white;
-            text-shadow: 0 0 10px var(--neon);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px var(--neon-purple);
             margin: 0;
         }
 
@@ -70,14 +75,15 @@
             color: var(--text-muted);
             border-left: 2px solid transparent;
             transition: 0.3s;
-            font-size: 1.2rem;
+            font-family: var(--font-bold);
+            font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         .nav-menu li:hover, .nav-menu li.active {
             background: rgba(188, 19, 254, 0.05);
-            color: var(--neon);
-            border-left: 2px solid var(--neon);
+            color: var(--neon-purple);
+            border-left: 2px solid var(--neon-purple);
         }
 
         /* Main Content */
@@ -100,18 +106,23 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
+        /* Nagłówki czcionką z logo (Orbitron) */
         h2 {
-            font-family: 'Orbitron', sans-serif;
+            font-family: var(--font-bold);
+            font-weight: 700;
             color: white;
             margin-top: 0;
-            text-shadow: 0 0 5px var(--neon);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 5px var(--neon-purple);
         }
 
         .input-group { margin-bottom: 20px; }
         
         label {
             display: block;
-            color: var(--neon);
+            font-family: var(--font-bold);
+            color: var(--neon-purple);
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
@@ -127,28 +138,30 @@
             color: white;
             font-size: 1.1rem;
             box-sizing: border-box;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-light);
         }
 
-        input:focus { border-color: var(--neon); outline: none; }
+        input:focus { border-color: var(--neon-purple); outline: none; }
 
         button {
             width: 100%;
             padding: 15px;
             background: transparent;
-            border: 2px solid var(--neon);
+            border: 2px solid var(--neon-purple);
             color: white;
-            font-family: 'Orbitron', sans-serif;
+            font-family: var(--font-bold);
             font-weight: bold;
             text-transform: uppercase;
             cursor: pointer;
             transition: 0.3s;
+            letter-spacing: 1px;
+            border-radius: 8px;
         }
 
         button:hover {
-            background: var(--neon);
+            background: var(--neon-purple);
             color: #000;
-            box-shadow: 0 0 15px var(--neon);
+            box-shadow: 0 0 15px var(--neon-purple);
         }
 
         #result {
@@ -161,9 +174,9 @@
 
         .time-val {
             font-size: 3rem;
-            font-family: 'Orbitron', sans-serif;
+            font-family: var(--font-bold);
             color: white;
-            text-shadow: 0 0 10px var(--neon);
+            text-shadow: 0 0 10px var(--neon-purple);
         }
 
         .share-btn {
@@ -172,12 +185,13 @@
             color: #0ff;
             text-decoration: none;
             cursor: pointer;
+            font-family: var(--font-light);
         }
 
         /* Mobile */
         @media (max-width: 768px) {
             body { flex-direction: column; }
-            #sidebar { width: 100%; border-right: none; border-bottom: 2px solid var(--neon); }
+            #sidebar { width: 100%; border-right: none; border-bottom: 2px solid var(--neon-purple); }
             #main { padding: 20px; }
         }
     </style>
@@ -200,15 +214,15 @@
 <div id="main">
     <div class="container">
         <h2>Time Cost Calculator</h2>
-        <p style="color: var(--text-muted); font-size: 0.9rem;">Convert expenses into hours of your life.</p>
+        <p style="color: var(--text-muted); font-size: 0.9rem; font-family: var(--font-light);">Convert expenses into hours of your life.</p>
         
         <div class="input-group">
-            <label>Item Price ($)</label>
+            <label>Price (USD)</label>
             <input type="number" id="price" placeholder="0.00">
         </div>
 
         <div class="input-group">
-            <label>Your Hourly Rate (Net)</label>
+            <label>Hourly Rate (Net)</label>
             <input type="number" id="rate" placeholder="0.00">
         </div>
 
@@ -216,7 +230,7 @@
 
         <div id="result">
             <div class="time-val" id="val">0.0h</div>
-            <p style="text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 0;">Hours of life spent</p>
+            <p style="text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 0; font-family: var(--font-light);">Hours of life spent</p>
             <div class="share-btn" onclick="copyResult()">[ COPY_FOR_TERMINAL ]</div>
         </div>
     </div>
