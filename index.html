@@ -60,15 +60,16 @@
             align-items: center;
             box-shadow: 0 0 10px rgba(0,0,0,0.5);
             
-            /* Zmniejszony rozmiar */
-            width: 110px;
-            height: 110px;
-            overflow: hidden;
+            /* Zmniejszony rozmiar kontenera */
+            width: 100px;
+            height: 100px;
+            overflow: hidden; /* Ukrywa wystające części logo */
         }
 
+        /* POWIĘKSZONE LOGO */
         .logo-icon {
-            width: 100%; 
-            height: 100%;
+            width: 130%; /* Obrazek jest o 30% większy niż kontener */
+            height: 130%;
             border-radius: 50%;
             object-fit: cover;
         }
@@ -203,7 +204,7 @@
             body { flex-direction: column; }
             #sidebar { width: 100%; border-right: none; border-bottom: 2px solid var(--neon); }
             #main { padding: 20px; }
-            .logo-wrapper { width: 90px; height: 90px; } /* Mniejsze na mobile */
+            .logo-wrapper { width: 90px; height: 90px; } 
             .logo-text-image { width: 180px; }
         }
     </style>
