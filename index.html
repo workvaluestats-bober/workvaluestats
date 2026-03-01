@@ -48,10 +48,10 @@
             align-items: center;
         }
 
-        /* Kontener na ikonę bobra - ZMASKOWANIE POŚWIATY */
+        /* Kontener na ikonę bobra - POPRAWIONY */
         .logo-wrapper {
-            background-color: #050505; /* Ten sam kolor co sidebar, maskuje krawędzie */
-            padding: 2px;
+            background-color: #050505; /* Tło sidebara maskuje krawędzie */
+            padding: 0px; 
             border-radius: 50%;
             border: 1px solid #222;
             margin-bottom: 15px;
@@ -59,11 +59,16 @@
             justify-content: center;
             align-items: center;
             box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            
+            /* Ścisłe dopasowanie */
+            width: 140px;
+            height: 140px;
+            overflow: hidden;
         }
 
         .logo-icon {
-            width: 140px; 
-            height: 140px;
+            width: 100%; 
+            height: 100%;
             border-radius: 50%;
             object-fit: cover;
         }
@@ -198,7 +203,7 @@
             body { flex-direction: column; }
             #sidebar { width: 100%; border-right: none; border-bottom: 2px solid var(--neon); }
             #main { padding: 20px; }
-            .logo-icon { width: 100px; height: 100px; }
+            .logo-wrapper { width: 100px; height: 100px; } /* Mniejsze na mobile */
             .logo-text-image { width: 180px; }
         }
     </style>
