@@ -42,44 +42,48 @@
             text-align: center;
             padding-bottom: 20px;
             border-bottom: 1px solid #222;
-            margin-bottom: 20px;
+            margin-bottom: 10px; /* Zmniejszony margines */
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* Kontener na ikonę bobra - mały */
+        /* Kontener na ikonę bobra */
         .logo-wrapper {
             background-color: #050505; 
             padding: 0px; 
             border-radius: 50%;
             border: 1px solid #222;
-            margin-bottom: 15px;
+            margin-bottom: 5px; /* Zmniejszony margines pod ikoną */
             display: flex;
             justify-content: center;
             align-items: center;
             box-shadow: 0 0 10px rgba(0,0,0,0.5);
             
-            /* Zmniejszony rozmiar kontenera */
+            /* Rozmiar kontenera */
             width: 100px;
             height: 100px;
-            overflow: hidden; /* Ukrywa wystające części powiększonego logo */
+            overflow: hidden; 
         }
 
         /* POWIĘKSZONE LOGO (ZOOM) */
         .logo-icon {
-            width: 125%; /* Logo powiększone o 60% względem kontenera */
-            height: 125%;
+            width: 160%; /* Skala logo */
+            height: 160%;
             border-radius: 50%;
             object-fit: cover;
         }
 
-        /* Obrazek z napisem */
+        /* Obrazek z napisem - MOCNO PRZYCIĘTY I ZMNIEJSZONY */
         .logo-text-image {
-            width: 180px;
+            width: 180px; /* Szerokość napisu */
             height: auto;
-            margin-top: 10px;
+            margin-top: 0px; 
+            margin-bottom: 0px; 
             mix-blend-mode: screen; 
+            
+            /* PRZYCINANIE GÓRY I DOŁU - usuwa puste miejsce */
+            clip-path: inset(25% 0% 25% 0%); 
         }
 
         .nav-menu ul { list-style: none; padding: 0; }
@@ -205,7 +209,7 @@
             #sidebar { width: 100%; border-right: none; border-bottom: 2px solid var(--neon); }
             #main { padding: 20px; }
             .logo-wrapper { width: 90px; height: 90px; } 
-            .logo-text-image { width: 180px; }
+            .logo-text-image { width: 160px; }
         }
     </style>
 </head>
@@ -275,6 +279,3 @@
 
 </body>
 </html>
-
-
-
