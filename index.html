@@ -9,12 +9,12 @@
         :root {
             --neon: #bc13fe;
             --bg: #000000;                
-            --card-bg: #0a0a0f;           
+            --card-bg: #0a0a0f;            
             --text-light: #ffffff;
             --text-muted: #b0b0b0;
             --font-main: 'Inter', sans-serif;
             --font-head: 'Exo 2', sans-serif;
-            --sidebar-bg: #050505; /* Zmienna dla koloru sidebara */
+            --sidebar-bg: #050505;
         }
 
         body {
@@ -49,17 +49,19 @@
             align-items: center;
         }
 
-        /* Kontener na ikonę bobra */
+        /* Kontener na ikonę bobra + neonowa poświata */
         .logo-wrapper {
             background-color: var(--sidebar-bg); 
             padding: 0px; 
             border-radius: 50%;
             border: 1px solid #222;
-            margin-bottom: 5px; 
+            margin-bottom: 15px; /* Zwiększony margines */
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            
+            /* NEONOWA POŚWIATA - bezpośrednio z CSS */
+            box-shadow: 0 0 15px var(--neon);
             
             /* Rozmiar kontenera */
             width: 100px;
@@ -67,27 +69,21 @@
             overflow: hidden; 
         }
 
-        /* POWIĘKSZONE LOGO */
+        /* OSTRA IKONA BOBRA */
         .logo-icon {
-            width: 125%; 
-            height: 125%;
+            width: 100%;  /* Dopasowane do kontenera - brak rozmycia */
+            height: 100%; /* Dopasowane do kontenera */
             border-radius: 50%;
             object-fit: cover;
         }
 
-        /* Obrazek z napisem - DODANE TŁO */
+        /* Obrazek z napisem */
         .logo-text-image {
             width: 180px; 
             height: auto;
-            margin-top: 0px; 
-            margin-bottom: 0px; 
-            mix-blend-mode: screen; 
-            
-            /* PRZYCINANIE GÓRY I DOŁU */
-            clip-path: inset(35% 0% 35% 0%); 
-            
-            /* DODANE TŁO, ABY ZAMASKOWAĆ PRZEZROCZYSTOŚĆ */
-            background-color: var(--sidebar-bg);
+            margin-top: 10px;
+            /* Usunięto mix-blend-mode i clip-path, jeśli obrazek ma czarne tło */
+            /* Jeśli tekst jest biały a tło przezroczyste, użyj mix-blend-mode: screen; */
         }
 
         .nav-menu ul { list-style: none; padding: 0; }
@@ -240,47 +236,4 @@
         <h2>Time Cost Calculator</h2>
         <p style="color: var(--text-muted); font-size: 0.95rem;">Convert expenses into hours of your life.</p>
         
-        <div class="input-group">
-            <label>Price (USD)</label>
-            <input type="number" id="price" placeholder="0.00">
-        </div>
-
-        <div class="input-group">
-            <label>Hourly Rate (Net)</label>
-            <input type="number" id="rate" placeholder="0.00">
-        </div>
-
-        <button onclick="calc()">Run Scan</button>
-
-        <div id="result">
-            <div class="time-val" id="val">0.0h</div>
-            <p style="text-transform: uppercase; color: var(--text-muted); margin: 0; font-family: var(--font-head); font-size: 0.9rem;">Hours of life spent</p>
-            <div class="share-btn" onclick="copyResult()">[ COPY FOR X ]</div>
-        </div>
-    </div>
-</div>
-
-<script>
-    function calc() {
-        const p = document.getElementById('price').value;
-        const r = document.getElementById('rate').value;
-        const resDiv = document.getElementById('result');
-        
-        if(p > 0 && r > 0) {
-            const h = (p / r).toFixed(1);
-            document.getElementById('val').innerText = h + "h";
-            resDiv.style.display = 'block';
-        }
-    }
-
-    function copyResult() {
-        const val = document.getElementById('val').innerText;
-        const text = `WORKVALUE SCAN: This item costs me ${val} of my life. 🦫 Check your #WorkValue at [YourDomain].com`;
-        navigator.clipboard.writeText(text);
-        alert("Data copied to clipboard!");
-    }
-</script>
-
-</body>
-</html>
-
+        <div
